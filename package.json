@@ -1,0 +1,24 @@
+{
+	"name": "weather-cli",
+	"version": "1.0.0",
+	"description": "weather",
+	"main": "index.js",
+	"bin": "./index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"weather",
+		"cli"
+	],
+	"author": "Kirill Zhukovskiy",
+	"license": "ISC",
+	"homepage": "https://",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"bugs": {
+		"email": "zhuwork@yandex.ru"
+	}
+}
