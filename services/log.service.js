@@ -21,4 +21,30 @@ const printHelp = msg => {
 	)
 }
 
-export { printError, printSuccess, printHelp }
+const printForecast = ({ name, weather, main: { temp, feels_like } }) => {
+	let messages = []
+	if (!name) {
+		throw new Error('Что-то пошло не так, мы не нашли город(')
+	}
+
+	messages.push(`В городе ${name}`)
+
+	const descr = weather[0].description
+	if (descr) {
+		messages.push(`Сегодня ${descr}`)
+	}
+
+	if (temp) {
+		messages.push(`Температура ${temp}`)
+	}
+
+	if (feels_like) {
+		messages.push(`Ощущается как ${feels_like}`)
+	}
+
+	const res = messages.map(msg => `${chalk.black.bgWhite(' Погода: ')} ${msg}`).join('\n')
+
+	console.log(dedent(res))
+}
+
+export { printError, printSuccess, printHelp, printForecast }

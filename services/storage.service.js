@@ -6,10 +6,12 @@ const filePath = join(homedir(), 'weather-data.json')
 
 const saveKeyValue = async (key, value) => {
 	let data = {}
+
 	if (await isExist(filePath)) {
 		const file = await promises.readFile(filePath)
 		data = JSON.parse(file)
 	}
+
 	data[key] = value
 	await promises.writeFile(filePath, JSON.stringify(data))
 }
@@ -28,7 +30,6 @@ const isExist = async path => {
 		await promises.stat(path)
 		return true
 	} catch (e) {
-		console.log(e)
 		return false
 	}
 }

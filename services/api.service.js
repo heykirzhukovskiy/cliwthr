@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { TOKEN_DICTIONARY } from '../constants/index.js'
+import { printError } from './log.service.js'
 import { getKeyValue } from './storage.service.js'
 
 const getWeather = async city => {
@@ -9,16 +10,21 @@ const getWeather = async city => {
 		throw new Error('Не задан апи-ключ, задайте его через команду -t [API_KEY]')
 	}
 
-	const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
-		params: {
-			q: city,
-			appid: token,
-			lang: 'ru',
-			units: 'metric',
-		},
-	})
+	try {
+		const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+			params: {
+				q: city,
+				appid: token,
+				lang: 'ru',
+				units: 'metric',
+			},
+		})
 
-	return data
+		return data
+	} catch (e) {
+		printError(e?.response?.data?.message ?? 'Что-то пошло не так')
+		return false
+	}
 
 	// const url = new URL('https://api.openweathermap.org/data/2.5/weather')
 	// url.searchParams.append('q', city)
