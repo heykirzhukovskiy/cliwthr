@@ -19,7 +19,7 @@
 	"license": "ISC",
 	"repository": {
 		"type": "git",
-		"url": ""
+		"url": "https://github.com/heykirzhukovskiy/cliwthr"
 	},
 	"bugs": {
 		"email": "zhuwork@yandex.ru"
